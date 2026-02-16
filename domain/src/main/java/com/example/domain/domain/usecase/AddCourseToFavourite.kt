@@ -1,11 +1,11 @@
 package com.example.domain.domain.usecase
 
 import com.example.domain.domain.models.Course
-import com.example.domain.domain.repository.FavouriteCourseRepository
+import com.example.domain.domain.repository.CourseRepository
 import javax.inject.Inject
 
-class AddCourseToFavourites @Inject constructor(
-    val repository: FavouriteCourseRepository
+class AddCourseToFavourite @Inject constructor(
+    val repository: CourseRepository
 ) {
     operator fun invoke(course: Course) = repository.addCourseToFavourite(course = course)
 }

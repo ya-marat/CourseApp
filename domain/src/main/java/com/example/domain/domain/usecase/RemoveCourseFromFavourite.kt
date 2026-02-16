@@ -3,8 +3,8 @@ package com.example.domain.domain.usecase
 import com.example.domain.domain.repository.CourseRepository
 import javax.inject.Inject
 
-class GetFavouriteCoursesUseCase @Inject constructor(
+class RemoveCourseFromFavourite @Inject constructor(
     val repository: CourseRepository
 ) {
-    operator fun invoke() = repository.favouriteCourses
+    operator fun invoke(courseId: Int) = repository.removeCourseFromFavourite(courseId)
 }
