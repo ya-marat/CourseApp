@@ -1,4 +1,4 @@
-package com.example.oursesapp.data.remote.network
+package com.example.data.data.remote.network
 
 
 import android.util.Log

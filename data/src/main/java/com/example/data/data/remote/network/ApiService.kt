@@ -1,6 +1,6 @@
-package com.example.oursesapp.data.remote.network
+package com.example.data.data.remote.network
 
-import com.example.oursesapp.data.remote.network.dto.СourseListDto
+import com.example.data.data.remote.network.dto.СourseListDto
 import retrofit2.http.GET
 
 interface ApiService {
