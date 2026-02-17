@@ -1,10 +1,12 @@
-package com.example.oursesapp.di
+package com.example.oursesapp
 
 import android.app.Application
 import com.example.data.data.di.AppScope
 import com.example.data.data.di.DbModule
 import com.example.data.data.di.NetworkModule
 import com.example.data.data.di.RepositoryModule
+import com.example.domain.domain.repository.CourseRepository
+import com.example.feature_auth.AuthDependencies
 import dagger.BindsInstance
 import dagger.Component
 
@@ -16,7 +18,7 @@ import dagger.Component
         NetworkModule::class
     ]
 )
-interface AppComponent {
+interface AppComponent: AuthDependencies {
 
     //fun inject()
 

@@ -4,15 +4,18 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.data.data.local.entity.CourseDbEntity
 
 @Database(
-    entities = [],
+    entities = [
+        CourseDbEntity::class
+    ],
     version = 1,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
-    companion object{
+    companion object {
         private var db: AppDatabase? = null
         private const val DB_NAME = "courses_app_database.db"
         private val LOCK = Any()
@@ -20,7 +23,7 @@ abstract class AppDatabase : RoomDatabase() {
         fun getInstance(application: Application): AppDatabase {
             synchronized(LOCK) {
                 db?.let { return it }
-                val instance =  Room.databaseBuilder(
+                val instance = Room.databaseBuilder(
                     application,
                     AppDatabase::class.java,
                     DB_NAME

@@ -23,3 +23,5 @@ rootProject.name = "СoursesApp"
 include(":app")
 include(":data")
 include(":domain")
+include(":feature_auth")
+include(":core")

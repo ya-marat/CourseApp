@@ -1,9 +1,11 @@
 package com.example.data.data.local.entity
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "courses")
 data class CourseDbEntity (
+    @PrimaryKey
     val id: Int,
     val title: String,
     val text: String,

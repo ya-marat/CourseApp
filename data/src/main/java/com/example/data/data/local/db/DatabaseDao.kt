@@ -1,11 +1,13 @@
 package com.example.data.data.local.db
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.data.data.local.entity.CourseDbEntity
 import kotlinx.coroutines.flow.Flow
 
+@Dao
 interface DatabaseDao {
 
     @Query("SELECT * FROM courses")
