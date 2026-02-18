@@ -12,4 +12,7 @@
     <string name="search_courses_hint">Search courses..</string>
     <string name="add_sort_sort">По дате добавления</string>
     <string name="course_detail_btn">Подробнее</string>
+    <string name="main_bottom_menu_item">Главная</string>
+    <string name="favourite_bottom_menu_item">Избранное</string>
+    <string name="account_bottom_menu_item">Аккаунт</string>
 </resources>

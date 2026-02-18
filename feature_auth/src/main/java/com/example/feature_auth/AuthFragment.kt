@@ -14,6 +14,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.example.core.di.navigation.AppNavigator
 import com.example.feature_auth.databinding.FragmentAuthBinding
 import kotlinx.coroutines.launch
 
@@ -53,7 +54,7 @@ class AuthFragment : Fragment() {
 
                 launch {
                     viewModel.isLoginEnabled.collect { isEnabled ->
-                        binding.btnEnter.isEnabled = isEnabled
+                        //binding.btnEnter.isEnabled = isEnabled
                     }
                 }
 
@@ -75,7 +76,7 @@ class AuthFragment : Fragment() {
         }
 
         binding.btnEnter.setOnClickListener {
-            Log.d("AuthFragment", "Enter Click")
+            (requireActivity() as AppNavigator).openMain()
         }
 
         binding.vkBtn.setOnClickListener {

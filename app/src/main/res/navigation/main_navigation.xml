@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/auth_graph">
+
+    <navigation
+        android:id="@+id/auth_graph"
+        app:startDestination="@id/authFragment">
+
+        <fragment
+            android:id="@+id/authFragment"
+            android:name="com.example.feature_auth.AuthFragment"
+            android:label="AuthFragment">
+
+            <action
+                android:id="@+id/action_authFragment_to_main_graph"
+                app:destination="@id/main_graph"
+                app:popUpTo="@id/auth_graph"
+                app:popUpToInclusive="true"/>
+
+        </fragment>
+
+    </navigation>
+
+    <navigation
+        android:id="@+id/main_graph"
+        app:startDestination="@id/mainScreenFragment">
+
+        <fragment
+            android:id="@+id/mainScreenFragment"
+            android:name="com.example.feature_course.MainScreenFragment"
+            android:label="Home" />
+
+        <fragment
+            android:id="@+id/favouriteCourseFragment"
+            android:name="com.example.feature_course.FavouriteCourseFragment"
+            android:label="Favorites" />
+
+<!--        <fragment-->
+<!--            android:id="@+id/profileFragment"-->
+<!--            android:name="com.example.feature_profile.presentation.ProfileFragment"-->
+<!--            android:label="Profile" />-->
+
+    </navigation>
+
+<!--    <fragment-->
+<!--        android:id="@+id/authFragment"-->
+<!--        android:name="com.example.feature_auth.AuthFragment"-->
+<!--        android:label="AuthFragment" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_authFragment_to_mainScreenFragment"-->
+<!--            app:destination="@id/mainScreenFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/mainScreenFragment"-->
+<!--        android:name="com.example.feature_course.MainScreenFragment"-->
+<!--        android:label="MainScreenFragment" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_mainScreenFragment_to_favouriteCourseFragment"-->
+<!--            app:destination="@id/favouriteCourseFragment" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/favouriteCourseFragment"-->
+<!--        android:name="com.example.feature_course.FavouriteCourseFragment"-->
+<!--        android:label="FavouriteCourseFragment" />-->
+</navigation>

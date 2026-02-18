@@ -51,6 +51,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
+    implementation(libs.androidx.fragment.ktx)
+
     implementation(libs.retorfit.core)
     implementation(libs.retorfit.gsonConverter)
 
@@ -65,8 +67,12 @@ dependencies {
 
     implementation(project(":data"))
     implementation(project(":domain"))
+    implementation(project(":core"))
     implementation(project(":feature_auth"))
     implementation(project(":feature_course"))
+
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
