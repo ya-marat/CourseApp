@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    tools:context=".MainScreenFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etSearchCourse"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:background="@drawable/oval_bg"
+                android:backgroundTint="#24252A"
+                android:hint="@string/search_courses_hint"
+                android:drawableStart="@drawable/search_icon"
+                android:drawablePadding="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="19dp"
+                android:paddingBottom="19dp"
+                android:textColorHint="@color/hint_color"
+                android:textSize="14sp"
+                android:layout_weight="1" />
+
+            <Space
+                android:layout_width="8dp"
+                android:layout_height="0dp"/>
+
+            <ImageButton
+                android:id="@+id/ibFilter"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/oval_ripple"
+                android:backgroundTint="#24252A"
+                android:src="@drawable/filter_btn_icon"
+                android:contentDescription="@null"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_sort_sort"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="end"
+            android:textColor="@color/text_green_tint"
+            android:clickable="true"
+            android:focusable="true"
+            android:drawableEnd="@drawable/arrow_down_up_icon"
+            android:drawableTint="@color/text_green_tint"/>
+
+        <include
+            layout="@layout/item_course"
+
+            android:layout_width="328dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

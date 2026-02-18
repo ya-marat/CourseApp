@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentContainerView
 import androidx.viewpager2.adapter.FragmentViewHolder
 import com.example.feature_auth.AuthFragment
+import com.example.feature_course.MainScreenFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         var fv = findViewById<FragmentContainerView>(R.id.main_fragment_container)
 
         supportFragmentManager.beginTransaction().add(fv,
-            AuthFragment.newInstance(), ""
+            MainScreenFragment.newInstance(), ""
         ).commit()
     }
 }

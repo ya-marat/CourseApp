@@ -51,7 +51,7 @@ dependencies {
 
     implementation(libs.lifecycle.viewmodel)
 
-    implementation("androidx.fragment:fragment-ktx:1.8.9")
+    implementation(libs.androidx.fragment.ktx)
 
     implementation(project(":domain"))
     implementation(project(":core"))

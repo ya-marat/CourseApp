@@ -9,4 +9,7 @@
     <string name="forgot_password_label">Забыли пароль</string>
     <string name="enter_password_hint">Введите пароль</string>
     <string name="email_hint">example@gmail.com</string>
+    <string name="search_courses_hint">Search courses..</string>
+    <string name="add_sort_sort">По дате добавления</string>
+    <string name="course_detail_btn">Подробнее</string>
 </resources>
