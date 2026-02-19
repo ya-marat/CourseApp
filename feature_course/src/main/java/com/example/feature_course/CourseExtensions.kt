@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-fun Long.toDateString(pattern: String = "yyyy-MM-dd"): String {
+fun Long.toDateString(pattern: String = "d MMMM yyyy"): String {
     val format = SimpleDateFormat(pattern, Locale.getDefault())
     return format.format(Date(this))
 }

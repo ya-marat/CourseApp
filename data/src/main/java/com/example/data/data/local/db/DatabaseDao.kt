@@ -16,6 +16,12 @@ interface DatabaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCourseToFavourite(courseDbEntity: CourseDbEntity)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertAllFavourites(list: List<CourseDbEntity>)
+
+    @Query("SELECT EXISTS(SELECT 1 FROM courses WHERE id = :id)")
+    suspend fun isFavourite(id: Int): Boolean
+
     @Query("DELETE FROM courses WHERE id=:courseId")
     suspend fun removeCourseFromFavourite(courseId: Int)
 }

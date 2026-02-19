@@ -1,7 +1,7 @@
 package com.example.feature_course.list
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.feature_course.list.main.CourseUi
+import com.example.feature_course.CourseUi
 
 class CourseDiffCallback : DiffUtil.ItemCallback<CourseUi>() {
     override fun areItemsTheSame(

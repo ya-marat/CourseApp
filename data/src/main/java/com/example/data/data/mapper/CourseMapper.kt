@@ -14,7 +14,7 @@ class CourseMapper @Inject constructor() {
         text = dto.text,
         price = dto.price,
         rate = dto.rate,
-        hasLike = dto.hasLike,
+        hasLike = false,
         publishDate = dto.publishDate.toMillis()
     )
 
@@ -28,6 +28,7 @@ class CourseMapper @Inject constructor() {
         publishDate = course.publishDate
     )
 
+
     fun mapCourseDbEntityToCourseDomain(courseDbEntity: CourseDbEntity) = Course(
         id = courseDbEntity.id,
         title = courseDbEntity.title,
@@ -36,5 +37,15 @@ class CourseMapper @Inject constructor() {
         rate = courseDbEntity.rate,
         hasLike = courseDbEntity.hasLike,
         publishDate = courseDbEntity.publishDate
+    )
+
+    fun mapCourseDtoToCourseDbEntity(courseDto: CourseDto) = CourseDbEntity(
+        id = courseDto.id,
+        title = courseDto.title,
+        text = courseDto.text,
+        price = courseDto.price,
+        rate = courseDto.rate,
+        hasLike = courseDto.hasLike,
+        publishDate = courseDto.publishDate.toMillis()
     )
 }

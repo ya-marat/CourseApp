@@ -1,4 +1,4 @@
-package com.example.feature_course.mainscreen
+package com.example.feature_course.favourite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,20 +9,20 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.di.extensions.dp
 import com.example.feature_course.CourseListUiState
+import com.example.feature_course.R
+import com.example.feature_course.databinding.FragmentFavouriteCourseBinding
 import com.example.feature_course.databinding.FragmentMainScreenBinding
-import com.example.feature_course.di.CourseDependencies
 import com.example.feature_course.di.CourseDependenciesProvider
 import com.example.feature_course.di.DaggerCourseComponent
-import com.example.feature_course.list.VerticalSpaceItemDecoration
 import com.example.feature_course.list.CoursesAdapter
+import com.example.feature_course.list.VerticalSpaceItemDecoration
 import kotlinx.coroutines.launch
 
-class CourseFragment : Fragment() {
+class FavouriteCourseFragment : Fragment() {
 
-    private lateinit var binding: FragmentMainScreenBinding
+    private lateinit var binding: FragmentFavouriteCourseBinding
 
     private val component by lazy {
         DaggerCourseComponent.factory().create(
@@ -30,59 +30,58 @@ class CourseFragment : Fragment() {
         )
     }
 
-    private val viewModel: CourseViewModel by viewModels {
+    private val viewModel: FavouriteCourseViewModel by viewModels {
         component.viewModelFactory()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainScreenBinding.inflate(layoutInflater)
+        binding = FragmentFavouriteCourseBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = CoursesAdapter(::onCourseLikeClick)
+        val adapter = CoursesAdapter(::onFavouriteClick)
 
-        binding.rvMainCoursesList.adapter = adapter
-        binding.rvMainCoursesList.addItemDecoration(VerticalSpaceItemDecoration(16.dp))
+        binding.rvFavouriteCoursesList.adapter = adapter
+        binding.rvFavouriteCoursesList.addItemDecoration(VerticalSpaceItemDecoration(16.dp))
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-
                 launch {
                     viewModel.state.collect { state ->
-                        when (state) {
+                        when(state){
                             CourseListUiState.Initial,
                             CourseListUiState.Loading -> {
-
+                                // Здесь показывает прогресс бар
                             }
-
+                            CourseListUiState.Error -> {
+                                // показываем что то в случае ошибки
+                            }
                             is CourseListUiState.Success -> {
                                 adapter.submitList(state.courses)
-                            }
-
-                            CourseListUiState.Error -> {
-                                // Сообщить об ошибке при загрузке
                             }
                         }
                     }
                 }
             }
         }
-
     }
 
-    private fun onCourseLikeClick(courseId: Int) {
+    private fun onFavouriteClick(courseId: Int) {
         viewModel.toggleFavourite(courseId)
     }
 
     companion object {
-
         fun newInstance() =
-            CourseFragment()
+            FavouriteCourseFragment()
     }
 }

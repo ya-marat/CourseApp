@@ -4,8 +4,8 @@ import com.example.domain.domain.models.Course
 import com.example.domain.domain.repository.CourseRepository
 import javax.inject.Inject
 
-class AddCourseToFavourite @Inject constructor(
+class ToggleFavouriteCourseUseCase @Inject constructor(
     val repository: CourseRepository
 ) {
-    suspend operator fun invoke(course: Course) = repository.addCourseToFavourite(course = course)
+    suspend operator fun invoke(courseId: Int) = repository.toggleFavouriteCourse(courseId)
 }

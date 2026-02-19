@@ -2,6 +2,7 @@ package com.example.feature_course.di
 
 import androidx.lifecycle.ViewModel
 import com.example.core.di.ViewModelKey
+import com.example.feature_course.favourite.FavouriteCourseViewModel
 import com.example.feature_course.mainscreen.CourseViewModel
 import dagger.Binds
 import dagger.Module
@@ -14,4 +15,9 @@ interface CourseModule {
     @IntoMap
     @ViewModelKey(CourseViewModel::class)
     fun bindCourseViewModel(viewModel: CourseViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavouriteCourseViewModel::class)
+    fun bindFavouriteCourseViewModel(viewModel: FavouriteCourseViewModel): ViewModel
 }

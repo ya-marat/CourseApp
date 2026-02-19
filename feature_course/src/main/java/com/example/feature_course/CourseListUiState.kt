@@ -1,6 +1,4 @@
-package com.example.feature_course.mainscreen
-
-import com.example.feature_course.list.main.CourseUi
+package com.example.feature_course
 
 sealed class CourseListUiState {
 
@@ -10,4 +8,6 @@ sealed class CourseListUiState {
     data class Success(
         val courses: List<CourseUi>
     ): CourseListUiState()
+
+    object Error: CourseListUiState()
 }

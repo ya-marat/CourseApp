@@ -9,6 +9,9 @@ import com.example.domain.domain.repository.CourseRepository
 import com.example.domain.domain.result.DomainError
 import com.example.domain.domain.result.Result
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -19,30 +22,76 @@ class CourseRepositoryImpl @Inject constructor(
     val mapper: CourseMapper
 ) : CourseRepository {
 
-    override val favouriteCourses: Flow<List<Course>>
-        get() = databaseDao.getFavouritesCourses()
-            .map { entities ->
-                entities.map { entity -> mapper.mapCourseDbEntityToCourseDomain(entity) }
+    private val remoteCourses = MutableStateFlow<List<Course>>(emptyList())
+
+    override fun observeFavouriteCourses(): Flow<List<Course>> {
+        return combine(
+            remoteCourses,
+            databaseDao.getFavouritesCourses()
+        ) { courses, favourites ->
+
+            val favouriteIds = favourites.map { it.id }.toSet()
+
+            courses
+                .filter { favouriteIds.contains(it.id) }
+                .map { it.copy(hasLike = true) }
+        }
+    }
+
+    override fun observeCourses(): Flow<List<Course>> {
+        return combine(
+            remoteCourses,
+            databaseDao.getFavouritesCourses()
+        ) { courses, favourites ->
+
+            val favouriteIds = favourites.map { it.id }.toSet()
+
+            courses.map { course ->
+                course.copy(
+                    hasLike = favouriteIds.contains(course.id)
+                )
+            }
+        }
+    }
+
+    override suspend fun toggleFavouriteCourse(courseId: Int): Result<Unit> {
+
+        val isFavourite = databaseDao.isFavourite(courseId)
+        return if (isFavourite) {
+            dbCall { databaseDao.removeCourseFromFavourite(courseId) }
+        } else {
+            val remoteCoursesValue = remoteCourses.value
+            val course = remoteCoursesValue.find { it.id == courseId }
+
+            if (course == null) {
+                return Result.Failure(DomainError.Unknown)
             }
 
-    override suspend fun addCourseToFavourite(course: Course): Result<Unit> {
-        return dbCall {
-            databaseDao.insertCourseToFavourite(mapper.mapDomainCourseToDbCourseEntity(course))
+            dbCall {
+                databaseDao.insertCourseToFavourite(
+                    mapper.mapDomainCourseToDbCourseEntity(
+                        course
+                    )
+                )
+            }
         }
     }
 
-    override suspend fun removeCourseFromFavourite(courseId: Int): Result<Unit> {
-        return dbCall {
-            databaseDao.removeCourseFromFavourite(courseId)
-        }
-    }
-
-    override suspend fun loadCourses(): Result<List<Course>> {
+    override suspend fun loadCourses(): Result<Unit> {
         return try {
             val loadedList = apiService.loadCourseList()
-            val mappedData =
-                loadedList.courses.map { dtoCourse -> mapper.mapCourseDtoToDomain(dtoCourse) }
-            Result.Success(mappedData)
+
+            val dtoCourseList = loadedList.courses
+
+            val initialFavourites = dtoCourseList
+                .filter { it.hasLike }
+                .map { mapper.mapCourseDtoToCourseDbEntity(it) }
+            databaseDao.insertAllFavourites(initialFavourites)
+
+            databaseDao.getFavouritesCourses().first()
+            remoteCourses.value = dtoCourseList.map { mapper.mapCourseDtoToDomain(it) }
+
+            Result.Success(Unit)
         } catch (e: Exception) {
             Result.Failure(DomainError.Unknown)
         }

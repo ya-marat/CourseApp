@@ -1,10 +1,9 @@
-package com.example.feature_course.list.main
+package com.example.feature_course.list
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.feature_course.list.CourseDiffCallback
-import com.example.feature_course.list.courseAdapterDelegate
+import com.example.feature_course.CourseUi
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
 
 class CoursesAdapter(

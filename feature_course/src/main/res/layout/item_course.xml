@@ -13,13 +13,69 @@
         android:orientation="vertical"
         android:background="#24252A">
 
-        <ImageView
-            android:id="@+id/ivCourseCover"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="114dp"
-            android:scaleType="centerCrop"
-            android:contentDescription="@null"
-            tools:src="@drawable/course_cover_1" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivCourseCover"
+                android:layout_width="match_parent"
+                android:layout_height="114dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="@null"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:src="@drawable/course_cover_1" />
+
+            <TextView
+                android:id="@+id/tv_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/green_star"
+                android:drawablePadding="4dp"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/oval_bg"
+                android:backgroundTint="@color/item_bg"
+                tools:text="3.9"/>
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_rating"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="4dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/oval_bg"
+                android:backgroundTint="@color/item_bg"
+                tools:text="10 сентября 2024"/>
+            
+            <ImageButton
+                android:id="@+id/ib_favourite_toggle"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/oval_bg"
+                android:backgroundTint="@color/item_bg"
+                tools:src="@drawable/in_favourite_ic"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

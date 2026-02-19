@@ -15,4 +15,6 @@
     <string name="main_bottom_menu_item">Главная</string>
     <string name="favourite_bottom_menu_item">Избранное</string>
     <string name="account_bottom_menu_item">Аккаунт</string>
+    <string name="favourite_fragment_label">Избранное</string>
+    <string name="currency_symbol">%1$s ₽</string>
 </resources>

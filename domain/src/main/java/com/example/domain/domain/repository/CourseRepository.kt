@@ -6,11 +6,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface CourseRepository {
 
-    val favouriteCourses: Flow<List<Course>>
+    fun observeFavouriteCourses(): Flow<List<Course>>
 
-    suspend fun addCourseToFavourite(course: Course): Result<Unit>
+    fun observeCourses(): Flow<List<Course>>
 
-    suspend fun removeCourseFromFavourite(courseId: Int): Result<Unit>
+    suspend fun toggleFavouriteCourse(courseId: Int): Result<Unit>
 
-    suspend fun loadCourses(): Result<List<Course>>
+    suspend fun loadCourses(): Result<Unit>
 }

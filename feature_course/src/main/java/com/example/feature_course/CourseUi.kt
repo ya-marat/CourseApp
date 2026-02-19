@@ -1,4 +1,4 @@
-package com.example.feature_course.list.main
+package com.example.feature_course
 
 data class CourseUi(
     val id: Int,
@@ -8,5 +8,6 @@ data class CourseUi(
     val rate: String,
     val publishDate: String,
     val isFavourite: Boolean,
-    val publishDateMillis: Long
+    val publishDateMillis: Long,
+    val coverResId: Int
 )
