@@ -7,6 +7,7 @@ import com.example.domain.domain.usecase.LoadCourseListUseCase
 import com.example.domain.domain.usecase.ObserveCoursesUseCase
 import com.example.domain.domain.usecase.ToggleFavouriteCourseUseCase
 import com.example.feature_course.CourseListUiState
+import com.example.feature_course.CourseUi
 import com.example.feature_course.mapper.CourseModuleMapper
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,6 +20,9 @@ class CourseViewModel @Inject constructor(
     val toggleFavouriteCourseUseCase: ToggleFavouriteCourseUseCase,
     val courseModuleMapper: CourseModuleMapper
 ) : ViewModel() {
+
+    private var currentList: List<CourseUi> = emptyList()
+    private var isSortDesc = false
     private var _state = MutableStateFlow<CourseListUiState>(CourseListUiState.Initial)
     val state = _state.asStateFlow()
 
@@ -33,12 +37,28 @@ class CourseViewModel @Inject constructor(
         }
     }
 
+    fun onSortClicked() {
+        if (currentList.isEmpty()) {
+            return
+        }
+
+        isSortDesc = !isSortDesc
+
+        val sorted = if(isSortDesc){
+            currentList.sortedByDescending { it.publishDateMillis }
+        }else{
+            currentList.sortedBy { it.publishDateMillis }
+        }
+
+        _state.value = CourseListUiState.Success(sorted)
+    }
+
     private fun observeCourses() {
         viewModelScope.launch {
             observeCoursesUseCase().collect { courses ->
-                _state.value = CourseListUiState.Success(
+                currentList =
                     courses.map { course -> courseModuleMapper.mapDomainToCourseUi(course) }
-                )
+                _state.value = CourseListUiState.Success(currentList)
             }
         }
     }

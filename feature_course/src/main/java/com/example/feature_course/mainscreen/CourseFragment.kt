@@ -74,6 +74,9 @@ class CourseFragment : Fragment() {
             }
         }
 
+        binding.tvSort.setOnClickListener {
+            viewModel.onSortClicked()
+        }
     }
 
     private fun onCourseLikeClick(courseId: Int) {
