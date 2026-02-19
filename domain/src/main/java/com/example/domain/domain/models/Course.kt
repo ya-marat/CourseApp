@@ -7,5 +7,5 @@ data class Course(
     val price: String,
     val rate: String,
     val hasLike: Boolean,
-    val publishDate: String
+    val publishDate: Long
 )

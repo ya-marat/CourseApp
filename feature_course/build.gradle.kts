@@ -33,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -46,6 +49,9 @@ dependencies {
     implementation(libs.lifecycle.viewmodel)
 
     implementation(libs.androidx.fragment.ktx)
+
+    implementation(libs.adapterdelegates4)
+    implementation(libs.adapterdelegates4.viewbinding)
 
     implementation(project(":domain"))
     implementation(project(":core"))

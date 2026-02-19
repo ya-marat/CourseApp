@@ -29,7 +29,7 @@
 
         <fragment
             android:id="@+id/mainScreenFragment"
-            android:name="com.example.feature_course.MainScreenFragment"
+            android:name="com.example.feature_course.mainscreen.CourseFragment"
             android:label="Home" />
 
         <fragment

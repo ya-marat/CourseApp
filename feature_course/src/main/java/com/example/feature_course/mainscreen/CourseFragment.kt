@@ -1,0 +1,86 @@
+package com.example.feature_course.mainscreen
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.core.di.extensions.dp
+import com.example.feature_course.databinding.FragmentMainScreenBinding
+import com.example.feature_course.di.CourseDependencies
+import com.example.feature_course.di.CourseDependenciesProvider
+import com.example.feature_course.di.DaggerCourseComponent
+import com.example.feature_course.list.VerticalSpaceItemDecoration
+import com.example.feature_course.list.main.CoursesAdapter
+import kotlinx.coroutines.launch
+
+class CourseFragment : Fragment() {
+
+    private lateinit var binding: FragmentMainScreenBinding
+
+    private val component by lazy {
+        DaggerCourseComponent.factory().create(
+            (requireActivity().application as CourseDependenciesProvider).provideCourseDependencies()
+        )
+    }
+
+    private val viewModel: CourseViewModel by viewModels {
+        component.viewModelFactory()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentMainScreenBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val adapter = CoursesAdapter(::onCourseLikeClick)
+
+        binding.rvMainCourseList.adapter = adapter
+        binding.rvMainCourseList.addItemDecoration(VerticalSpaceItemDecoration(16.dp))
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+
+                launch {
+                    viewModel.state.collect { state ->
+                        when (state) {
+                            CourseListUiState.Initial,
+                            CourseListUiState.Loading -> {
+
+                            }
+                            is CourseListUiState.Success -> {
+                                adapter.submitList(state.courses)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+    private fun onCourseLikeClick(courseId: Int) {
+
+    }
+
+    companion object {
+
+        fun newInstance() =
+            CourseFragment()
+    }
+}

@@ -7,6 +7,7 @@ import com.example.data.data.di.NetworkModule
 import com.example.data.data.di.RepositoryModule
 import com.example.domain.domain.repository.CourseRepository
 import com.example.feature_auth.AuthDependencies
+import com.example.feature_course.di.CourseDependencies
 import dagger.BindsInstance
 import dagger.Component
 
@@ -18,7 +19,7 @@ import dagger.Component
         NetworkModule::class
     ]
 )
-interface AppComponent: AuthDependencies {
+interface AppComponent: AuthDependencies, CourseDependencies {
 
     //fun inject()
 

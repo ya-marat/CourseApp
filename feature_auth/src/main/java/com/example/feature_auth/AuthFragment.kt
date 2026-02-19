@@ -50,7 +50,7 @@ class AuthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
 
                 launch {
                     viewModel.isLoginEnabled.collect { isEnabled ->

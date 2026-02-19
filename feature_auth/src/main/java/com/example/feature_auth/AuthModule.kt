@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-interface AuthViewModelModule {
+interface AuthModule {
 
     @Binds
     @IntoMap

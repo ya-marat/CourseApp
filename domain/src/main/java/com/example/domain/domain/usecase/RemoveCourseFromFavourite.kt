@@ -6,5 +6,5 @@ import javax.inject.Inject
 class RemoveCourseFromFavourite @Inject constructor(
     val repository: CourseRepository
 ) {
-    operator fun invoke(courseId: Int) = repository.removeCourseFromFavourite(courseId)
+    suspend operator fun invoke(courseId: Int) = repository.removeCourseFromFavourite(courseId)
 }

@@ -6,5 +6,5 @@ import javax.inject.Inject
 class LoadCourseListUseCase @Inject constructor(
     val repository: CourseRepository
 ) {
-    operator fun invoke() = repository.loadCourses()
+    suspend operator fun invoke() = repository.loadCourses()
 }

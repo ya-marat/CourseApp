@@ -6,15 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import androidx.viewpager2.adapter.FragmentViewHolder
 import com.example.core.di.navigation.AppNavigator
-import com.example.feature_auth.AuthFragment
-import com.example.feature_course.MainScreenFragment
 import com.example.oursesapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), AppNavigator {

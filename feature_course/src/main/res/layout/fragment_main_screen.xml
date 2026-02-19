@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg"
-    tools:context=".MainScreenFragment">
+    tools:context=".mainscreen.CourseFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,11 +64,13 @@
             android:drawableEnd="@drawable/arrow_down_up_icon"
             android:drawableTint="@color/text_green_tint"/>
 
-        <include
-            layout="@layout/item_course"
-
-            android:layout_width="328dp"
-            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main_course_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_course" />
 
     </LinearLayout>
 

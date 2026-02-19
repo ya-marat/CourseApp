@@ -7,5 +7,5 @@ import javax.inject.Inject
 class AddCourseToFavourite @Inject constructor(
     val repository: CourseRepository
 ) {
-    operator fun invoke(course: Course) = repository.addCourseToFavourite(course = course)
+    suspend operator fun invoke(course: Course) = repository.addCourseToFavourite(course = course)
 }

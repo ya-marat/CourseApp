@@ -8,9 +8,9 @@ interface CourseRepository {
 
     val favouriteCourses: Flow<List<Course>>
 
-    fun addCourseToFavourite(course: Course): Result<Unit>
+    suspend fun addCourseToFavourite(course: Course): Result<Unit>
 
-    fun removeCourseFromFavourite(courseId: Int): Result<Unit>
+    suspend fun removeCourseFromFavourite(courseId: Int): Result<Unit>
 
-    fun loadCourses(): Result<List<Course>>
+    suspend fun loadCourses(): Result<List<Course>>
 }

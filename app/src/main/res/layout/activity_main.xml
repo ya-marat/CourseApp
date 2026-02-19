@@ -18,11 +18,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/nav_bar_border"/>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation_view"
         android:layout_width="0dp"
