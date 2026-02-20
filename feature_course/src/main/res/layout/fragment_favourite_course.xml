@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/background_primary"
     android:orientation="vertical"
     tools:context=".favourite.FavouriteCourseFragment">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:textColor="@color/white"
+        android:textColor="@color/text_primary"
         android:padding="16dp"
         android:textSize="22sp"
         android:text="@string/favourite_fragment_label" />

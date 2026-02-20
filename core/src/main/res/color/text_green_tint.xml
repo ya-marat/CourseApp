@@ -3,8 +3,8 @@
 
     <item
         android:state_pressed="true"
-        android:color="#0e8d42"/>
+        android:color="@color/accent_primary_pressed"/>
 
-    <item android:color="#12B956"/>
+    <item android:color="@color/accent_primary"/>
 
 </selector>

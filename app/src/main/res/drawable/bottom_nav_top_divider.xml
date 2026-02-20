@@ -3,14 +3,14 @@
 
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/item_bg"/>
+            <solid android:color="@color/background_card"/>
         </shape>
     </item>
 
     <item android:gravity="top">
         <shape android:shape="rectangle">
             <size android:height="1dp"/>
-            <solid android:color="@color/nav_bar_border"/>
+            <solid android:color="@color/bottom_nav_border"/>
         </shape>
     </item>
 

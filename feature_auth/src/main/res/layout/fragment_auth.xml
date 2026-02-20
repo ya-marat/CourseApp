@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/bg"
+    android:background="@color/background_primary"
     android:gravity="top|center_horizontal"
     tools:context=".AuthFragment">
 
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:text="@string/enter_label"
             android:textSize="28sp"
-            android:textColor="#F2F2F3" />
+            android:textColor="@color/text_primary" />
 
         <TextView
             android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:text="@string/email_label"
             android:layout_marginTop="28.dp"
             android:textSize="16sp"
-            android:textColor="#F2F2F3"/>
+            android:textColor="@color/text_primary"/>
 
         <EditText
             android:id="@+id/etEmail"
@@ -36,12 +36,12 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/oval_bg"
             android:hint="@string/email_hint"
-            android:textColorHint="@color/hint_color"
-            android:textColor="@color/white"
+            android:textColorHint="@color/text_hint"
+            android:textColor="@color/text_primary"
             android:textSize="14sp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:backgroundTint="#32333A"/>
+            android:backgroundTint="@color/input_background"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -49,7 +49,7 @@
             android:text="@string/password_label"
             android:layout_marginTop="11dp"
             android:textSize="16sp"
-            android:textColor="#F2F2F3"/>
+            android:textColor="@color/text_primary"/>
 
         <EditText
             android:id="@+id/etPassword"
@@ -58,13 +58,13 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/oval_bg"
             android:hint="@string/enter_password_hint"
-            android:textColorHint="@color/hint_color"
-            android:textColor="@color/white"
+            android:textColorHint="@color/text_hint"
+            android:textColor="@color/text_primary"
             android:textSize="14sp"
             android:paddingStart="16dp"
             android:inputType="textPassword"
             android:paddingEnd="16dp"
-            android:backgroundTint="#32333A"/>
+            android:backgroundTint="@color/input_background"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnEnter"
@@ -93,7 +93,7 @@
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:layout_marginEnd="5dp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/text_primary"/>
 
             <TextView
                 android:layout_width="wrap_content"
