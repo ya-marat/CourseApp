@@ -54,7 +54,7 @@ class AuthFragment : Fragment() {
 
                 launch {
                     viewModel.isLoginEnabled.collect { isEnabled ->
-                        //binding.btnEnter.isEnabled = isEnabled
+                        binding.btnEnter.isEnabled = isEnabled
                     }
                 }
 
