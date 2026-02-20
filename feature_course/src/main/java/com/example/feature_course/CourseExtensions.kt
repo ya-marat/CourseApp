@@ -4,8 +4,12 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+/*
+    Форсировано устанавливаю русскую локаль чтобы на любом устройстве с любой локалью
+    был русский язык. Это в рамках тестового разумеется
+ */
 fun Long.toDateString(pattern: String = "d MMMM yyyy"): String {
-    val format = SimpleDateFormat(pattern, Locale.getDefault())
+    val format = SimpleDateFormat(pattern, Locale.forLanguageTag("ru-RU"))
     return format.format(Date(this))
 }
 

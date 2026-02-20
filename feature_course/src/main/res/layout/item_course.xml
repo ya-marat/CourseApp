@@ -42,8 +42,7 @@
                 android:drawablePadding="4dp"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="4dp"
-                android:background="@drawable/oval_bg"
-                android:backgroundTint="@color/item_bg"
+                android:background="@drawable/bg_glass"
                 tools:text="3.9"/>
 
             <TextView
@@ -58,20 +57,19 @@
                 android:textColor="@color/white"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="4dp"
-                android:background="@drawable/oval_bg"
-                android:backgroundTint="@color/item_bg"
+                android:background="@drawable/bg_glass"
                 tools:text="10 сентября 2024"/>
             
             <ImageButton
                 android:id="@+id/ib_favourite_toggle"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
+                android:contentDescription="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/oval_bg"
-                android:backgroundTint="@color/item_bg"
+                android:background="@drawable/bg_glass"
                 tools:src="@drawable/in_favourite_ic"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
