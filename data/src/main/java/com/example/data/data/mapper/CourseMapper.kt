@@ -14,7 +14,7 @@ class CourseMapper @Inject constructor() {
         text = dto.text,
         price = dto.price,
         rate = dto.rate,
-        hasLike = false,
+        hasLike = dto.hasLike,
         publishDate = dto.publishDate.toMillis()
     )
 
@@ -24,7 +24,7 @@ class CourseMapper @Inject constructor() {
         text = course.text,
         price = course.price,
         rate = course.rate,
-        hasLike = course.hasLike,
+        hasLike = true,
         publishDate = course.publishDate
     )
 
@@ -45,7 +45,7 @@ class CourseMapper @Inject constructor() {
         text = courseDto.text,
         price = courseDto.price,
         rate = courseDto.rate,
-        hasLike = courseDto.hasLike,
+        hasLike = true,
         publishDate = courseDto.publishDate.toMillis()
     )
 }

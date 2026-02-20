@@ -25,16 +25,10 @@ class CourseRepositoryImpl @Inject constructor(
     private val remoteCourses = MutableStateFlow<List<Course>>(emptyList())
 
     override fun observeFavouriteCourses(): Flow<List<Course>> {
-        return combine(
-            remoteCourses,
-            databaseDao.getFavouritesCourses()
-        ) { courses, favourites ->
-
-            val favouriteIds = favourites.map { it.id }.toSet()
-
-            courses
-                .filter { favouriteIds.contains(it.id) }
-                .map { it.copy(hasLike = true) }
+        return databaseDao.getFavouritesCourses().map { course ->
+            course.map {
+                mapper.mapCourseDbEntityToCourseDomain(it)
+            }
         }
     }
 
