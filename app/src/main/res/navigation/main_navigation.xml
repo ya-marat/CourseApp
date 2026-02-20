@@ -37,10 +37,10 @@
             android:name="com.example.feature_course.favourite.FavouriteCourseFragment"
             android:label="Favorites" />
 
-<!--        <fragment-->
-<!--            android:id="@+id/profileFragment"-->
-<!--            android:name="com.example.feature_profile.presentation.ProfileFragment"-->
-<!--            android:label="Profile" />-->
+        <fragment
+            android:id="@+id/accountFragment"
+            android:name="com.example.feature_account.AccountFragment"
+            android:label="Account" />
 
     </navigation>
 

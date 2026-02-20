@@ -12,7 +12,7 @@
         android:title="@string/favourite_bottom_menu_item"/>
 
     <item
-        android:id="@+id/profileFragment"
+        android:id="@+id/accountFragment"
         android:icon="@drawable/ic_account_item"
         android:title="@string/account_bottom_menu_item"/>
 

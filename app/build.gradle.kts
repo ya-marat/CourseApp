@@ -70,6 +70,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":feature_auth"))
     implementation(project(":feature_course"))
+    implementation(project(":feature_account"))
 
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
