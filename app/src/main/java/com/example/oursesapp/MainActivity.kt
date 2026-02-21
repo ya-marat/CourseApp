@@ -1,13 +1,16 @@
 package com.example.oursesapp
 
+import android.content.Context
 import android.graphics.Color
 import android.net.http.SslCertificate.saveState
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -56,6 +59,14 @@ class MainActivity : AppCompatActivity(), AppNavigator {
     }
 
     override fun openMain() {
-        navController.navigate(R.id.action_authFragment_to_main_graph)
+
+        currentFocus?.clearFocus()
+
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
+
+        window.decorView.doOnPreDraw {
+            navController.navigate(R.id.action_authFragment_to_main_graph)
+        }
     }
 }
