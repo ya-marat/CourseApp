@@ -9,6 +9,7 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity(), AppNavigator {
             statusBarStyle = SystemBarStyle.dark(Color.TRANSPARENT),
             navigationBarStyle = SystemBarStyle.dark(Color.TRANSPARENT)
         )
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavigationView) { v, insets ->
@@ -59,14 +62,6 @@ class MainActivity : AppCompatActivity(), AppNavigator {
     }
 
     override fun openMain() {
-
-        currentFocus?.clearFocus()
-
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(binding.root.windowToken, 0)
-
-        window.decorView.doOnPreDraw {
-            navController.navigate(R.id.action_authFragment_to_main_graph)
-        }
+        navController.navigate(R.id.action_authFragment_to_main_graph)
     }
 }

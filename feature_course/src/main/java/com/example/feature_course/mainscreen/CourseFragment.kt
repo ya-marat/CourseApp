@@ -43,9 +43,9 @@ class CourseFragment : Fragment() {
     ): View? {
         binding = FragmentMainScreenBinding.inflate(layoutInflater)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(v.left, systemBars.top, v.right, v.bottom)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.setPadding(0, bars.top, 0, 0)
             insets
         }
 
