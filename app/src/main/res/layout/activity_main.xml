@@ -27,7 +27,7 @@
         app:itemTextColor="@color/bottom_nav_selector"
         app:menu="@menu/bottom_nav_menu"
         app:itemGravity="center"
-        app:itemActiveIndicatorStyle="@color/text_primary"
+        app:itemActiveIndicatorStyle="@style/CapsuleIndicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

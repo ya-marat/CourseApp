@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity(), AppNavigator {
             navigationBarStyle = SystemBarStyle.dark(Color.TRANSPARENT)
         )
         setContentView(binding.root)
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavigationView) { v, insets ->
             val navBar = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
             v.setPadding(v.paddingLeft, v.paddingTop, v.paddingRight, navBar.bottom)
